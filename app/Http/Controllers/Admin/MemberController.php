@@ -126,7 +126,7 @@ class MemberController extends Controller
     public function destroy($id, Request $request)
     {
         User::destroy($id);
-        $request->session()->flash('error','You have deleted the user successfully.');
+        $request->session()->flash('success','You have deleted the user successfully.');
         return redirect()->back();
 
     }

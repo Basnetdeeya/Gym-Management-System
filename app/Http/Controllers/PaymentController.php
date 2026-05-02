@@ -39,7 +39,6 @@ class PaymentController extends Controller
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
         ]);
-        return 'hello world';
         return view('frontend.payment');
 
 
@@ -63,7 +62,7 @@ class PaymentController extends Controller
         curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        $headers = ['Authorization: Key test_secret_key_90df94c93e484414b5dc9f9f5d1dc6c9'];
+        $headers = ['Authorization: Key ' . env('KHALTI_SECRET_KEY')];
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 
         // Response

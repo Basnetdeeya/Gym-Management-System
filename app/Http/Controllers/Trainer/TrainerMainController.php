@@ -11,12 +11,12 @@ class TrainerMainController extends Controller
 
     public function dashboard(){
         if(Gate::denies('logged-in')){
-            dd('No Access Allowed');
+            return redirect()->route('login');
         }
         if(Gate::allows('is-trainer')){
             return view ('trainer.app');
-        };
-
+        }
+        abort(403);
     }
 
 
@@ -27,15 +27,13 @@ class TrainerMainController extends Controller
      */
     public function index()
     {
-
         if(Gate::denies('logged-in')){
-            dd('No Access Allowed');
+            return redirect()->route('login');
         }
-        if(Gate::allows(['logged-in','is-trainer'])){
+        if(Gate::allows('is-trainer')){
             return view ('trainer.app');
-        };
-        dd('You need to be admin');
-
+        }
+        abort(403);
     }
 
     /**

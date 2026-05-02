@@ -13,12 +13,12 @@ class UserController extends Controller
 
     public function dashboard(){
         if(Gate::denies('logged-in')){
-            dd('No Access Allowed');
+            return redirect()->route('login');
         }
         if(Gate::allows('is-admin')){
             return view ('admin.app');
-        };
-
+        }
+        abort(403);
     }
 
 
@@ -31,13 +31,12 @@ class UserController extends Controller
     public function index()
     {
         if(Gate::denies('logged-in')){
-            dd('No Access Allowed');
+            return redirect()->route('login');
         }
-        if(Gate::allows(['logged-in','is-admin'])){
+        if(Gate::allows('is-admin')){
             return view ('admin.app');
-        };
-        dd('You need to be admin');
-        // return view ('admin.app');
+        }
+        abort(403);
     }
 
     /**

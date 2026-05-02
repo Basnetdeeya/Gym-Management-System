@@ -15,7 +15,7 @@ class PackageController extends Controller
      */
     public function index()
     {
-        $package = Package::get()->all();
+        $package = Package::all();
         $i=1;
         return view('admin.plans.index',compact('package','i'));
     }
@@ -98,7 +98,7 @@ class PackageController extends Controller
     public function destroy($id, Request $request)
     {
         Package::destroy($id);
-        $request->session()->flash('error','You have deleted the row successfully.');
+        $request->session()->flash('success','You have deleted the row successfully.');
         return redirect()->back();
     }
 }

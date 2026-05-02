@@ -15,7 +15,7 @@ class ChooseUsController extends Controller
      */
     public function index()
     {
-        $chooseus = ChooseUs::get()->all();
+        $chooseus = ChooseUs::all();
         $i=1;
         return view('admin.whychooseus.index',compact('chooseus','i'));
     }
@@ -96,7 +96,7 @@ class ChooseUsController extends Controller
     public function destroy($id, Request $request)
     {
         ChooseUs::destroy($id);
-        $request->session()->flash('error','You have deleted the row successfully.');
+        $request->session()->flash('success','You have deleted the row successfully.');
         return redirect()->back();
     }
 }
