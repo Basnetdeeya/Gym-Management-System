@@ -15,7 +15,7 @@ class WhatProvideController extends Controller
      */
     public function index()
     {
-        $provide = WhatProvide::get()->all();
+        $provide = WhatProvide::all();
         $i=1;
         return view('admin.whatweprovide.index',compact('provide','i'));
     }
@@ -102,7 +102,7 @@ class WhatProvideController extends Controller
     public function destroy($id, Request $request)
     {
         WhatProvide::destroy($id);
-        $request->session()->flash('error','You have deleted the row successfully.');
+        $request->session()->flash('success','You have deleted the row successfully.');
         return redirect()->back();
     }
 }

@@ -29,8 +29,10 @@ class DashboardCOntroller extends Controller
         select('schedules.*','users.name')
         ->join("users", "users.id", "=", "schedules.user_id")
         ->get();
-        $memberCount = Role::where('id', 3)->first()->users()->get()->count();
-        $trainerCount = Role::where('id', 2)->first()->users()->get()->count();
+        $memberRole = Role::where('id', 3)->first();
+        $memberCount = $memberRole ? $memberRole->users()->count() : 0;
+        $trainerRole = Role::where('id', 2)->first();
+        $trainerCount = $trainerRole ? $trainerRole->users()->count() : 0;
         return view('admin.dashboard', compact('schedule','memberCount','trainerCount'));
     }
 

@@ -15,7 +15,7 @@ class AdminFeedbackController extends Controller
      */
     public function index()
     {
-        $feedback = Feedback::get()->all();
+        $feedback = Feedback::all();
               $i =1;
               return view('admin.feedback.index', compact('feedback', 'i'));
     }
@@ -84,7 +84,7 @@ class AdminFeedbackController extends Controller
     public function destroy($id, Request $request)
     {
         Feedback::destroy($id);
-        $request->session()->flash('error','You have deleted the feedback successfully.');
+        $request->session()->flash('success','You have deleted the feedback successfully.');
         return redirect()->back();
     }
 }

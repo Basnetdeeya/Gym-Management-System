@@ -15,7 +15,7 @@ class AboutPageController extends Controller
      */
     public function index()
     {
-        $about = Aboutus::get()->all();
+        $about = Aboutus::all();
         $i=1;
         return view('admin.aboutus.index',compact('about','i'));
     }
@@ -101,7 +101,7 @@ class AboutPageController extends Controller
     public function destroy($id, Request $request)
     {
         Aboutus::destroy($id);
-        $request->session()->flash('error','You have deleted the row successfully.');
+        $request->session()->flash('success','You have deleted the row successfully.');
         return redirect()->back();
     }
 }

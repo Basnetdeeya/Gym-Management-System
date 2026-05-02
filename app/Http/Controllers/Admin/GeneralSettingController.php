@@ -15,7 +15,7 @@ class GeneralSettingController extends Controller
      */
     public function index()
     {
-        $settings = GeneralSettings::get()->all();
+        $settings = GeneralSettings::all();
         return view('admin.settings.index',compact('settings'));
     }
 
